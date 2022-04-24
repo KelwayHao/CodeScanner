@@ -7,18 +7,13 @@ import androidx.core.app.ActivityCompat
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.codescanner.R
 import com.example.codescanner.databinding.ActivityMainBinding
-import com.example.codescanner.presentation.listener.ClickListener
+import com.example.codescanner.presentation.scanner.ScannerFragment
+import com.example.codescanner.presentation.table.TableCodeFragment
 import com.example.codescanner.utils.openFragment
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val binding by viewBinding<ActivityMainBinding>()
-
-    private var click = object : ClickListener {
-        override fun getCode(code: String) {
-
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         CodeScannerApplication.appComponent?.inject(this)

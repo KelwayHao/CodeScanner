@@ -1,14 +1,15 @@
-package com.example.codescanner.presentation
+package com.example.codescanner.presentation.table
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.codescanner.R
 import com.example.codescanner.databinding.FragmentTableScannerBinding
-import com.example.codescanner.presentation.recycler.Adapter
-import com.example.codescanner.presentation.viewmodel.TableCodeViewModel
+import com.example.codescanner.presentation.CodeScannerApplication
+import com.example.codescanner.presentation.listener.ShareListener
+import com.example.codescanner.presentation.table.recycler.Adapter
 import javax.inject.Inject
 
 class TableCodeFragment : Fragment(R.layout.fragment_table_scanner) {
@@ -21,7 +22,19 @@ class TableCodeFragment : Fragment(R.layout.fragment_table_scanner) {
     @Inject
     lateinit var viewModel: TableCodeViewModel
     private val binding by viewBinding<FragmentTableScannerBinding>()
-    private val adapter by lazy { Adapter() }
+    private val adapter by lazy { Adapter(onClickShare) }
+
+    private val onClickShare = object : ShareListener {
+        override fun shareLink(link: String) {
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, link)
+            }
+            val intentChooser = Intent.createChooser(intent, "Share TITLE")
+            startActivity(intentChooser)
+        }
+
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

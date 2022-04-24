@@ -9,7 +9,7 @@ data class CodeScanEntity(
     @PrimaryKey
     var id: Long,
     @ColumnInfo(name = "link")
-    val code: String,
+    val link: String,
     @ColumnInfo(name = "date")
     val date: String,
     @ColumnInfo(name = "time")

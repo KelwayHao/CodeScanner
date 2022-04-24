@@ -12,7 +12,7 @@ class DataModule {
     @Provides
     fun provideCodeScanRepository(
         codeScanDao: CodeScanDao
-    ) : CodeScanRepository {
+    ): CodeScanRepository {
         return CodeScanEntityRepositoryImpl(codeScanDao)
     }
 }

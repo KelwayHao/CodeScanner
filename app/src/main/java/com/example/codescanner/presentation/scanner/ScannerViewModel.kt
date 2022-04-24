@@ -1,11 +1,11 @@
-package com.example.codescanner.presentation.viewmodel
+package com.example.codescanner.presentation.scanner
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.codescanner.domain.interactor.CodeScanInteractor
 import com.example.codescanner.domain.models.CodeScan
-import com.example.codescanner.domain.repository.CodeScanInteractor
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,13 +17,13 @@ class ScannerViewModel @Inject constructor(
     val codeScanner: LiveData<List<CodeScan>> get() = _codeScanner
 
     fun createScan(
-        code: String,
+        link: String,
         date: String,
         time: String
     ) {
         viewModelScope.launch {
             interactor.createCodeScan(
-                code,
+                link,
                 date,
                 time
             )

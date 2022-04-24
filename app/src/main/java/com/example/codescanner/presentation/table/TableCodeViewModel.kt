@@ -1,11 +1,11 @@
-package com.example.codescanner.presentation.viewmodel
+package com.example.codescanner.presentation.table
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.codescanner.domain.interactor.CodeScanInteractor
 import com.example.codescanner.domain.models.CodeScan
-import com.example.codescanner.domain.repository.CodeScanInteractor
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

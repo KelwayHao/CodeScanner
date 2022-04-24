@@ -8,4 +8,5 @@ interface CodeScanRepository {
     fun getSavedCodeScan(): Flow<List<CodeScanEntity>>
 
     suspend fun saveCodeScan(codeScan: CodeScan)
+
 }

@@ -13,4 +13,5 @@ interface CodeScanDao {
 
     @Query("SELECT * FROM code_scanner")
     fun getAllCode(): Flow<List<CodeScanEntity>>
+
 }

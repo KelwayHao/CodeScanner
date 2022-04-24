@@ -20,7 +20,7 @@ class RoomModule {
     }
 
     @Provides
-    fun provideCodeScanDao(database: AppDatabase) : CodeScanDao {
+    fun provideCodeScanDao(database: AppDatabase): CodeScanDao {
         return database.getCodeScan()
     }
 

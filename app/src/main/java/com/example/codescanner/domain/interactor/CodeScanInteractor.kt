@@ -1,4 +1,4 @@
-package com.example.codescanner.domain.repository
+package com.example.codescanner.domain.interactor
 
 import com.example.codescanner.domain.models.CodeScan
 import kotlinx.coroutines.flow.Flow
@@ -7,7 +7,7 @@ interface CodeScanInteractor {
     fun getCodeScan(): Flow<List<CodeScan>>
 
     suspend fun createCodeScan(
-        code: String,
+        link: String,
         date: String,
         time: String
     )

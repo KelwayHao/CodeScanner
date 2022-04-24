@@ -22,17 +22,3 @@ class CodeScanEntityRepositoryImpl(
         }
     }
 }
-
-/*
-flow {
-            while (true){
-                emit<List<CodeScan>>(
-                    codeScanDao.getAllCode().map { list ->
-                        list.map { codeScanEntity ->
-                            codeScanEntity.entityToCodeScan()
-                        }
-                    }
-                )
-                delay(3000L)
-            }
-        }.flowOn(Dispatchers.IO)*/
