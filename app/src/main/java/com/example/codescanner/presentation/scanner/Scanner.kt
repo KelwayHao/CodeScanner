@@ -7,8 +7,6 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
 import com.example.codescanner.R
-import com.example.codescanner.domain.models.CodeScan
-import com.example.codescanner.presentation.CodeScannerApplication
 import com.example.codescanner.presentation.table.TableCodeFragment
 import com.example.codescanner.utils.convertToDate
 import com.example.codescanner.utils.convertToTime

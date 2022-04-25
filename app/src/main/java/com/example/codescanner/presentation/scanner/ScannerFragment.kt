@@ -7,12 +7,14 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.budiyev.android.codescanner.CodeScanner
 import com.example.codescanner.R
 import com.example.codescanner.databinding.FragmentScannerBinding
+import com.example.codescanner.presentation.CodeScannerApplication
 import javax.inject.Inject
 
 class ScannerFragment() : Fragment(R.layout.fragment_scanner) {
 
     @Inject
     lateinit var viewModel: ScannerViewModel
+
     private val binding by viewBinding<FragmentScannerBinding>()
     private lateinit var codeScanner: CodeScanner
 
@@ -22,6 +24,7 @@ class ScannerFragment() : Fragment(R.layout.fragment_scanner) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        CodeScannerApplication.appComponent?.inject(this)
         val scannerView = binding.scannerView
         val activity = requireActivity()
         codeScanner = CodeScanner(activity, scannerView)
