@@ -9,7 +9,7 @@ import com.example.codescanner.R
 import com.example.codescanner.databinding.FragmentTableScannerBinding
 import com.example.codescanner.presentation.CodeScannerApplication
 import com.example.codescanner.presentation.listener.ShareListener
-import com.example.codescanner.presentation.table.recycler.Adapter
+import com.example.codescanner.presentation.table.recycler.TableAdapter
 import javax.inject.Inject
 
 class TableCodeFragment : Fragment(R.layout.fragment_table_scanner) {
@@ -22,7 +22,7 @@ class TableCodeFragment : Fragment(R.layout.fragment_table_scanner) {
     @Inject
     lateinit var viewModel: TableCodeViewModel
     private val binding by viewBinding<FragmentTableScannerBinding>()
-    private val adapter by lazy { Adapter(onClickShare) }
+    private val adapter by lazy { TableAdapter(onClickShare) }
 
     private val onClickShare = object : ShareListener {
         override fun shareLink(link: String) {

@@ -18,10 +18,10 @@ class TableCodeViewModel @Inject constructor(
     val codeScanner: LiveData<List<CodeScan>> get() = _codeScanner
 
     init {
-        initFlow()
+        getCodeScanFromDatabase()
     }
 
-    private fun initFlow() {
+    private fun getCodeScanFromDatabase() {
         interactor.getCodeScan()
             .map { _codeScanner.postValue(it) }
             .launchIn(viewModelScope)

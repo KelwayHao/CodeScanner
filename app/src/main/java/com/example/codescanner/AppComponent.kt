@@ -15,10 +15,8 @@ import dagger.Component
     modules = [DataModule::class, RoomModule::class, DomainModule::class]
 )
 interface AppComponent {
-    fun inject(target: MainActivity)
     fun inject(target: ScannerFragment)
     fun inject(target: TableCodeFragment)
-    fun inject(target: Scanner)
 
     @Component.Builder
     interface Builder {

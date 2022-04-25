@@ -7,28 +7,25 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
 import com.example.codescanner.R
+import com.example.codescanner.domain.models.CodeScan
 import com.example.codescanner.presentation.CodeScannerApplication
 import com.example.codescanner.presentation.table.TableCodeFragment
 import com.example.codescanner.utils.convertToDate
 import com.example.codescanner.utils.convertToTime
 import com.example.codescanner.utils.openFragment
-import javax.inject.Inject
 
 class Scanner {
-
-    @Inject
-    lateinit var viewModel: ScannerViewModel
 
     fun startScanner(
         codeScanner: CodeScanner,
         scannerView: CodeScannerView,
-        activity: FragmentActivity
+        activity: FragmentActivity,
+        getCodeScan: (link: String, date: String, time: String) -> Unit
     ) {
-        CodeScannerApplication.appComponent?.inject(this)
         codeScanner.decodeCallback = DecodeCallback { result ->
             activity.runOnUiThread() {
 
-                viewModel.createScan(
+                getCodeScan(
                     result.text,
                     Calendar.getInstance().time.convertToDate(),
                     Calendar.getInstance().time.convertToTime()

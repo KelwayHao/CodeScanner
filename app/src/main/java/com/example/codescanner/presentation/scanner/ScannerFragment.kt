@@ -3,12 +3,17 @@ package com.example.codescanner.presentation.scanner
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.budiyev.android.codescanner.CodeScanner
-import com.budiyev.android.codescanner.CodeScannerView
 import com.example.codescanner.R
+import com.example.codescanner.databinding.FragmentScannerBinding
+import javax.inject.Inject
 
 class ScannerFragment() : Fragment(R.layout.fragment_scanner) {
 
+    @Inject
+    lateinit var viewModel: ScannerViewModel
+    private val binding by viewBinding<FragmentScannerBinding>()
     private lateinit var codeScanner: CodeScanner
 
     companion object {
@@ -17,10 +22,12 @@ class ScannerFragment() : Fragment(R.layout.fragment_scanner) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val scannerView = view.findViewById<CodeScannerView>(R.id.scanner_view)
+        val scannerView = binding.scannerView
         val activity = requireActivity()
         codeScanner = CodeScanner(activity, scannerView)
-        Scanner().startScanner(codeScanner, scannerView, requireActivity())
+        Scanner().startScanner(codeScanner, scannerView, requireActivity()) { link, date, time ->
+            viewModel.createScan(link, date, time)
+        }
     }
 
     override fun onResume() {

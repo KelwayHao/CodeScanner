@@ -7,13 +7,13 @@ import com.example.codescanner.databinding.ItemRowBinding
 import com.example.codescanner.domain.models.CodeScan
 import com.example.codescanner.presentation.listener.ShareListener
 
-class ViewHolder(
+class TableViewHolder(
     private val binding: ItemRowBinding,
     private val onClickShareListener: ShareListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
-        fun newInstance(parent: ViewGroup, onClickShareListener: ShareListener) = ViewHolder(
+        fun newInstance(parent: ViewGroup, onClickShareListener: ShareListener) = TableViewHolder(
             ItemRowBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,

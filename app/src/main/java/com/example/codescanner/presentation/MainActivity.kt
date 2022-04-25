@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private val binding by viewBinding<ActivityMainBinding>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        CodeScannerApplication.appComponent?.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
     }
